@@ -32,7 +32,7 @@ To install clone the repo:
 
 ## Streaming to Cookost API
 
-1. You have to install the `Swat-KOST <https://github.com/Xinecraft/Swat-KOST>`_ package:
+1. You have to install the [Swat-KOST](https://github.com/Xinecraft/Swat-KOST) package:
 
     a. Install the package by copying the 4 .u files into your server's System directory:
         
