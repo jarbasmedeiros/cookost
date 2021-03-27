@@ -1,61 +1,71 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Cookost API
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/jarbasmedeiros/cookost?style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/jarbasmedeiros/cookost?color=orange&style=for-the-badge)
+![badge](https://img.shields.io/github/license/jarbasmedeiros/devs-notes-api?style=for-the-badge)
 
-## About Laravel
+>Cookost is a API for SWAT4 Servers.  This API is used to real-time statistics system of 
+player versus player. It was developed with Laravel 7.3 LTS.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+>Server tracking is implemented with the help of ``Xinecraft/Swat-KOST``.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Installation
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+To install clone the repo:
 
-## Learning Laravel
+``git clone git@github.com:jarbasmedeiros/cookost.git``
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+``cd cookost``
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+``composer install``
 
-## Laravel Sponsors
+``php artisan key:generate``
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+``php artisan migrate``
 
-### Premium Partners
+## Required Streaming Software
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+* `swat-utils <https://github.com/sergeii/swat-utils>`_
+* `swat-http <https://github.com/sergeii/swat-http>`_
+* `swat-julia <https://github.com/sergeii/swat-julia>`_
+* `Swat-KOST <https://github.com/Xinecraft/Swat-KOST>`_
 
-## Contributing
+## Streaming to Cookost API
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. You have to install the `Swat-KOST <https://github.com/Xinecraft/Swat-KOST>`_ package:
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
+    a. Install the package by copying the 4 .u files into your server's System directory:
+        
+        Utils.u
+        HTTP.u
+        Julia.u
+        KOST.u
+    
+    b. Make sure ``Swat4DedicatedServer.ini`` looks similar::
+        
+        [Engine.GameEngine]
+        EnableDevTools=False
+        InitialMenuClass=SwatGui.SwatMainMenu
+        ...
+        ServerActors=AMMod.AMGameMod
+        ...
+        ServerActors=Utils.Package
+        ServerActors=HTTP.Package
+        ServerActors=Julia.Core
+        ServerActors=KOST.Extension
+        
+        [Julia.Core]
+        Enabled=True
+        
+        [KOST.Extension]
+        Enabled=True
+        URL=http://example.org/
+        ServerUID=1
+        Key=123456789
+        Compatible=True
+    
+    c.   Start the server and enjoy :)  
+    
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The Devs Note is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
