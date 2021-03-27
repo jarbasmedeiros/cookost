@@ -25,10 +25,10 @@ To install clone the repo:
 
 ## Required Streaming Software
 
-* `swat-utils <https://github.com/sergeii/swat-utils>`_
-* `swat-http <https://github.com/sergeii/swat-http>`_
-* `swat-julia <https://github.com/sergeii/swat-julia>`_
-* `Swat-KOST <https://github.com/Xinecraft/Swat-KOST>`_
+* [swat-utils](https://github.com/sergeii/swat-utils)
+* [swat-http](https://github.com/sergeii/swat-http)
+* [swat-julia](https://github.com/sergeii/swat-julia)
+* [Swat-KOST](https://github.com/Xinecraft/Swat-KOST)
 
 ## Streaming to Cookost API
 
